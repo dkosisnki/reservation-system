@@ -19,10 +19,10 @@ class VisitNoteAdderFacadeTest {
     void shouldAddVisitNoteCorrectly() {
         //given
         VisitNoteAdderRequestDto request = VisitNoteAdderRequestDto.builder()
-                .visitId(1)
+                .visitCode(1)
                 .doctorNote("Some note")
                 .build();
-        when(visitHistoryCheckerFacade.visitExists(request.visitId())).thenReturn(true);
+        when(visitHistoryCheckerFacade.visitExists(request.visitCode())).thenReturn(true);
         //when
         VisitNoteAdderResponseDto result = visitNoteAdderFacade.addNote(request);
         //then
@@ -34,10 +34,10 @@ class VisitNoteAdderFacadeTest {
     void shouldFailWhenDoctorTryToAddNoteToNoExistingVisit() {
         //given
         VisitNoteAdderRequestDto request = VisitNoteAdderRequestDto.builder()
-                .visitId(1337)
+                .visitCode(1337)
                 .doctorNote("Some note")
                 .build();
-        when(visitHistoryCheckerFacade.visitExists(request.visitId())).thenReturn(false);
+        when(visitHistoryCheckerFacade.visitExists(request.visitCode())).thenReturn(false);
         //when
         VisitNoteAdderResponseDto result = visitNoteAdderFacade.addNote(request);
         //then

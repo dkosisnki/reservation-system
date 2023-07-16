@@ -26,6 +26,14 @@ public class VisitNoteRepositoryTestImpl implements VisitNoteRepository{
         return Optional.ofNullable(repository.get(id));
     }
 
+
+    @Override
+    public Optional<VisitNoteEntity> findByVisitNoteCode(Integer visitNoteCode) {
+        return repository.values().stream()
+                .filter(entity -> entity.getVisitNoteCode() == visitNoteCode)
+                .findFirst();
+    }
+
     @Override
     public void flush() {
 
@@ -170,4 +178,5 @@ public class VisitNoteRepositoryTestImpl implements VisitNoteRepository{
     public Page<VisitNoteEntity> findAll(Pageable pageable) {
         return null;
     }
+
 }

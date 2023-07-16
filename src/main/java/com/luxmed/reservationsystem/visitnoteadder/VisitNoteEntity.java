@@ -14,12 +14,17 @@ public class VisitNoteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "visitNote_id")
+    @Column(name = "visit_note_id")
     private Integer visitNoteId;
 
+    @Column(name ="visit_note_code")
+    private Integer visitNoteCode;
 
-    @Column(name = "doctorNote")
+    @Column(name = "doctor_note")
     private String doctorNote;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "visitNote")
+    private VisitEntity visit;
 
 
 }

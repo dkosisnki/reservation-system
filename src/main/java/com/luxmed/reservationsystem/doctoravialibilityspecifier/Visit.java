@@ -12,6 +12,8 @@ import java.time.LocalTime;
 @Value
 @Builder
 public class Visit{
+        Integer visitId;
+        Integer visitCode;
         LocalDate date;
         LocalTime beginningOfVisit;
         LocalTime endOfVisit;

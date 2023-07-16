@@ -1,16 +1,20 @@
 package com.luxmed.reservationsystem.doctorregister;
 
+import com.luxmed.reservationsystem.doctoravialibilityspecifier.VisitEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Getter
 @Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "doctor")
 public class DoctorEntity {
 
     @Id
@@ -27,9 +31,12 @@ public class DoctorEntity {
     @Column(name = "pesel")
     private String pesel;
 
-    @Column(name = "medicalLicense")
+    @Column(name = "medical_license")
     private String medicalLicense;
 
     @Column(name = "email")
     private String email;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
+    private Set<VisitEntity> visits;
 }

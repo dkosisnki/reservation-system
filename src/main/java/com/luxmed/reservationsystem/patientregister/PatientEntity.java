@@ -1,12 +1,20 @@
 package com.luxmed.reservationsystem.patientregister;
 
+import com.luxmed.reservationsystem.doctoravialibilityspecifier.VisitEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Getter
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "patient")
 public class PatientEntity {
 
     @Id
@@ -26,5 +34,7 @@ public class PatientEntity {
     @Column(name = "email")
     private String email;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
+    private Set<VisitEntity> visits;
 
 }

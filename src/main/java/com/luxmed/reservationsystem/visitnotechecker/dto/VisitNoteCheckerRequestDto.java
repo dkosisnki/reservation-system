@@ -1,4 +1,9 @@
 package com.luxmed.reservationsystem.visitnotechecker.dto;
 
-public record VisitNoteCheckerRequestDto() {
+import lombok.Builder;
+
+@Builder
+public record VisitNoteCheckerRequestDto(
+        Integer visitCode
+) {
 }
